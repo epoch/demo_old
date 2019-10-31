@@ -4,6 +4,7 @@ require 'sinatra' # libraries & gems
 
 if settings.development?
   require 'sinatra/reloader' # depends on a gem sinatra-contrib
+  require 'pry'
 end
 
 require 'pg'
