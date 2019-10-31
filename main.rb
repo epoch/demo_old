@@ -1,11 +1,13 @@
 # dependencies
 require 'sinatra' # libraries & gems
-require 'sinatra/reloader'
+
+
+if settings.development?
+  require 'sinatra/reloader' # depends on a gem sinatra-contrib
+end
+
 require 'pg'
 require_relative 'models/dish'
-
-# environments?
-
 
 get '/' do
   @dishes = all_dishes()
