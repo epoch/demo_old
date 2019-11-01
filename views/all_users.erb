@@ -1,0 +1,7 @@
+<% @users.each do |user| %>
+  <p>
+    <a href="/user_details?id=<%= user['id'] %>">
+      <%= user['email'] %>
+    </a>
+  </p>
+<% end %>

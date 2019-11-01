@@ -2,12 +2,17 @@
 
 <a href="/new_dish">post new dish</a>
 
-<% @dishes.each do |dish| %>
-  <h2><%= dish["name"] %></h2>
-  <a href="/details?id=<%= dish["id"] %>">
-    <img src="<%= dish["image_url"] %>" alt="">
-  </a>
-<% end %>
+
+<section class="grid">
+  <% @dishes.each do |dish| %>
+    <div>
+      <a href="/details?id=<%= dish["id"] %>">
+        <img src="<%= dish["image_url"] %>" alt="">
+      </a>
+      <h2><%= dish["name"] %></h2>
+    </div>
+  <% end %>
+</section>
 
 
 

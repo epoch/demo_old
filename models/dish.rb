@@ -1,11 +1,3 @@
-
-def run_sql(sql)
-  conn = PG.connect(ENV['DATABASE_URL'] || { dbname: "goodfoodhunting" })
-  records = conn.exec(sql)
-  conn.close
-  return records
-end
-
 def all_dishes()
   return run_sql("SELECT * FROM dishes;")
 end
@@ -14,9 +6,20 @@ def find_one_dish(id)
   return run_sql("SELECT * FROM dishes WHERE id = #{id};").first
 end
 
+def update_dish(id, name, image_url)
+  sql = <<~SQL
+    update dishes 
+    set name = '#{ name }', image_url = '#{ image_url }' 
+    where id = #{id};
+  SQL
+  run_sql(sql)
+end
+
 def create_dish(name, image_url)
-  sql =  "INSERT INTO dishes (name, image_url) "
-  sql += "VALUES ('#{ name }', '#{ image_url }');"
+  sql = <<~SQL
+    INSERT INTO dishes (name, image_url) 
+    VALUES ('#{ name }', '#{ image_url }');
+  SQL
   return run_sql(sql)
 end
 

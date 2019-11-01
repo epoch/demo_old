@@ -5,5 +5,6 @@ require 'pg'
 require 'pry'
 
 require_relative 'models/dish'
+require_relative 'models/user'
 
 binding.pry
